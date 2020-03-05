@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.com.acme.responsavel;
+package br.com.acme.domain.model.condominio;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -14,8 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import br.com.acme.reclamacao.Reclamacao;
-import br.com.acme.reserva.Reserva;
+import br.com.acme.domain.model.aviso.Aviso;
+import br.com.acme.domain.model.multas.Multa;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -30,8 +30,8 @@ import lombok.Setter;
 @Setter
 @Builder
 @EqualsAndHashCode
-@Table(name = "tb_responsavel")
-public class Responsavel implements Serializable {
+@Table(name = "tb_condominio")
+public class Condominio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -44,9 +44,10 @@ public class Responsavel implements Serializable {
 	
 	private String telefone;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "responsavelReserva")
-	private Set<Reserva> reservas;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "condominoMulta")
+	private Set<Multa> multasAplicadas;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "responsavelReclamacao")
-	private Set<Reclamacao> reclamacoes;
+	@OneToMany
+	private Set<Aviso> avisos;
+	
 }

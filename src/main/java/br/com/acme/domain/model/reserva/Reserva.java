@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.com.acme.reserva;
+package br.com.acme.domain.model.reserva;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -15,8 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import br.com.acme.areacomum.AreaComum;
-import br.com.acme.responsavel.Responsavel;
+import br.com.acme.domain.model.areacomum.AreaComum;
+import br.com.acme.domain.model.responsavel.Responsavel;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

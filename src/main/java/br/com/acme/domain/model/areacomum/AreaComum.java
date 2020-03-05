@@ -1,7 +1,7 @@
 /**
  * 
  */
-package br.com.acme.areacomum;
+package br.com.acme.domain.model.areacomum;
 
 import java.io.Serializable;
 

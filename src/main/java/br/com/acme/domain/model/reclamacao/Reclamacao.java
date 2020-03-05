@@ -1,9 +1,10 @@
 /**
  * 
  */
-package br.com.acme.aviso;
+package br.com.acme.domain.model.reclamacao;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import br.com.acme.condominio.Condominio;
+import br.com.acme.domain.model.responsavel.Responsavel;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -28,17 +29,19 @@ import lombok.Setter;
 @Setter
 @Builder
 @EqualsAndHashCode
-@Table(name = "tb_avisos")
-public class Aviso implements Serializable {
+@Table(name = "tb_reclamacao")
+public class Reclamacao  implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private String descricaoAviso;
+	private String descricaoReclamacao;
+	
+	private LocalDate dataReclamacao;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_condominio")
-	private Condominio condominoAvisos;
+	@JoinColumn(name = "id_responsavel")
+	private Responsavel responsavelReclamacao;
 }
