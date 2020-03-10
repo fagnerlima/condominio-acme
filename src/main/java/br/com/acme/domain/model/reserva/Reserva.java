@@ -34,21 +34,23 @@ import lombok.Setter;
 @Table(name = "tb_reserva")
 public class Reserva implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	
-	private LocalDate dataReserva;
-	
-	private LocalDateTime inicioReserva;
-	
-	private LocalDateTime fimReserva;
-	
-	@ManyToOne
-	@JoinColumn(name = "id_responsavel")
-	private Responsavel responsavelReserva;
-	
-	@ManyToOne
-	@JoinColumn(name = "id_area_comum")
-	private AreaComum areaComumReservada;
+    private static final long serialVersionUID = -1405428905200765872L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private LocalDate dataReserva;
+
+    private LocalDateTime inicioReserva;
+
+    private LocalDateTime fimReserva;
+
+    @ManyToOne
+    @JoinColumn(name = "id_responsavel")
+    private Responsavel responsavelReserva;
+
+    @ManyToOne
+    @JoinColumn(name = "id_area_comum")
+    private AreaComum areaComumReservada;
 }
