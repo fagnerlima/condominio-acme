@@ -1,12 +1,11 @@
 package br.com.acme.application.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.acme.application.service.exception.InformationNotFoundException;
 import br.com.acme.domain.service.BaseService;
 import br.com.acme.infrastructure.persistence.hibernate.repository.BaseRepository;
 
@@ -15,9 +14,8 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
     @Transactional(readOnly = true)
     @Override
     public T findById(Long id) {
-        Optional<T> entityOpt = getRepository().findById(id);
-
-        return entityOpt.orElseThrow(() -> new RuntimeException("Informação não encontrada"));
+        return getRepository().findById(id)
+                .orElseThrow(() -> new InformationNotFoundException());
     }
 
     @Transactional(readOnly = true)
