@@ -15,16 +15,13 @@ public final class ResponseTO<T> implements Serializable {
     private List<String> links = new ArrayList<>();
 
     public ResponseTO() {
-        super();
     }
 
     public ResponseTO(T data) {
-        super();
         this.data = data;
     }
 
     public ResponseTO(T data, List<String> links) {
-        super();
         this.data = data;
         this.links = links;
     }

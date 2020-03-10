@@ -1,6 +1,5 @@
 package br.com.acme.application.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.acme.domain.model.unidade.Unidade;
@@ -11,8 +10,11 @@ import br.com.acme.infrastructure.persistence.hibernate.repository.UnidadeReposi
 @Service
 public class UnidadeServiceImpl extends BaseServiceImpl<Unidade> implements UnidadeService {
 
-    @Autowired
     private UnidadeRepository unidadeRepository;
+
+    public UnidadeServiceImpl(UnidadeRepository unidadeRepository) {
+        this.unidadeRepository = unidadeRepository;
+    }
 
     @Override
     protected BaseRepository<Unidade> getRepository() {
