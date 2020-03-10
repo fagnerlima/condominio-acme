@@ -16,9 +16,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import br.com.acme.domain.model.multas.Multa;
 import br.com.acme.domain.model.responsavel.Responsavel;
-import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,7 +31,6 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Builder
 @EqualsAndHashCode
 @Table(name = "tb_responsavel")
 public class Unidade implements Serializable {
@@ -48,6 +48,7 @@ public class Unidade implements Serializable {
 	
 	private String blocoUnidade;
 	
+	@JsonIgnoreProperties("unidadeMulta") // TODO fix
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadeMulta")
 	private Set<Multa> multasUnidade;
 	
