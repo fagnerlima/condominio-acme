@@ -3,10 +3,10 @@ package br.com.acme.presentation.dto.unidade;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import br.com.acme.presentation.dto.multa.MultaUnidadeResponseTO;
-import br.com.acme.presentation.dto.responsavel.ResponsavelResponseTO;
+import br.com.acme.presentation.dto.multa.MultaResponseTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,16 +18,14 @@ public class UnidadeResponseTO implements Serializable {
 
     private Long id;
 
-    @JsonProperty("responsavel")
-    private ResponsavelResponseTO responsavelUnidade;
-
     @JsonProperty("numero")
     private String numeroUnidade;
 
     @JsonProperty("bloco")
     private String blocoUnidade;
 
+    @JsonIgnoreProperties("unidade")
     @JsonProperty("multas")
-    private List<MultaUnidadeResponseTO> multasUnidade;
+    private List<MultaResponseTO> multasUnidade;
 
 }
