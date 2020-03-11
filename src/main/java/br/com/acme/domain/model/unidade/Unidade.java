@@ -4,7 +4,7 @@
 package br.com.acme.domain.model.unidade;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,8 +15,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.com.acme.domain.model.multas.Multa;
 import br.com.acme.domain.model.responsavel.Responsavel;
@@ -48,8 +46,7 @@ public class Unidade implements Serializable {
 	
 	private String blocoUnidade;
 	
-	@JsonIgnoreProperties("unidadeMulta") // TODO fix
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadeMulta")
-	private Set<Multa> multasUnidade;
+	private List<Multa> multasUnidade;
 	
 }

@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.acme.application.factory.ResponseFactory;
 import br.com.acme.domain.model.multas.Multa;
 import br.com.acme.domain.service.MultaService;
+import br.com.acme.infrastructure.facade.ModelMapperFacade;
+import br.com.acme.presentation.dto.multa.MultaReducedResponseTO;
+import br.com.acme.presentation.dto.multa.MultaResponseTO;
 import br.com.acme.presentation.dto.shared.ResponseTO;
 
 @RestController
@@ -20,22 +23,27 @@ public class MultaController {
 
     private MultaService multaService;
 
-    public MultaController(MultaService multaService) {
+    private ModelMapperFacade modelMapperFacade;
+
+    public MultaController(MultaService multaService, ModelMapperFacade modelMapperFacade) {
         this.multaService = multaService;
+        this.modelMapperFacade = modelMapperFacade;
     }
 
     @GetMapping
-    public ResponseEntity<ResponseTO<Page<Multa>>> findAll(Pageable pageable) {
+    public ResponseEntity<ResponseTO<Page<MultaReducedResponseTO>>> findAll(Pageable pageable) {
         Page<Multa> multasPage = multaService.findAll(pageable);
+        Page<MultaReducedResponseTO> multasPageResponseTO = modelMapperFacade.map(multasPage, MultaReducedResponseTO.class);
 
-        return ResponseFactory.ok(multasPage);
+        return ResponseFactory.ok(multasPageResponseTO);
     }
 
     @PostMapping
-    public ResponseEntity<ResponseTO<Multa>> save(@RequestBody Multa multa) {
+    public ResponseEntity<ResponseTO<MultaResponseTO>> save(@RequestBody Multa multa) {
         Multa multaSaved = multaService.save(multa);
+        MultaResponseTO multaResponseTO = modelMapperFacade.map(multaSaved, MultaResponseTO.class);
 
-        return ResponseFactory.created(multaSaved);
+        return ResponseFactory.created(multaResponseTO);
     }
 
 }

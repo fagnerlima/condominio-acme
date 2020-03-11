@@ -16,7 +16,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.com.acme.domain.model.condominio.Condominio;
 import br.com.acme.domain.model.unidade.Unidade;
@@ -45,7 +44,6 @@ public class Multa implements Serializable {
 	@JsonFormat(pattern="dd-MM-yyyy")
 	private LocalDate dataMulta;
 	
-	@JsonIgnoreProperties("multasUnidade")
 	@ManyToOne
 	@JoinColumn(name = "id_unidade")
 	private Unidade unidadeMulta;
