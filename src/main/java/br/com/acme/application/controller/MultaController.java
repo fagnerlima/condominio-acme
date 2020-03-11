@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +37,14 @@ public class MultaController {
         Page<MultaReducedResponseTO> multasPageResponseTO = modelMapperFacade.map(multasPage, MultaReducedResponseTO.class);
 
         return ResponseFactory.ok(multasPageResponseTO);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ResponseTO<MultaResponseTO>> findById(@PathVariable Long id) {
+        Multa multa = multaService.findById(id);
+        MultaResponseTO multaResponseTO = modelMapperFacade.map(multa, MultaResponseTO.class);
+
+        return ResponseFactory.ok(multaResponseTO);
     }
 
     @PostMapping

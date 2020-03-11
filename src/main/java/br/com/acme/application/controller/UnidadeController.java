@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +37,14 @@ public class UnidadeController {
         Page<UnidadeReducedResponseTO> unidadesPageResponseTO = modelMapperFacade.map(unidadesPage, UnidadeReducedResponseTO.class);
 
         return ResponseFactory.ok(unidadesPageResponseTO);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ResponseTO<UnidadeResponseTO>> findById(@PathVariable Long id) {
+        Unidade unidade = unidadeService.findById(id);
+        UnidadeResponseTO unidadeResponseTO = modelMapperFacade.map(unidade, UnidadeResponseTO.class);
+
+        return ResponseFactory.ok(unidadeResponseTO);
     }
 
     @PostMapping
