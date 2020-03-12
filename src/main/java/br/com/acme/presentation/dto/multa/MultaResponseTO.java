@@ -24,7 +24,7 @@ public class MultaResponseTO implements Serializable {
     private LocalDate dataMulta;
 
     @JsonIgnoreProperties("multasAplicadas")
-    private CondominioResponseTO condominoMulta;
+    private CondominioResponseTO condominioMulta;
 
     @JsonIgnoreProperties("multasUnidade")
     private UnidadeResponseTO unidadeMulta;

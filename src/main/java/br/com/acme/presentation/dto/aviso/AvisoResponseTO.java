@@ -2,8 +2,6 @@ package br.com.acme.presentation.dto.aviso;
 
 import java.io.Serializable;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import br.com.acme.presentation.dto.condominio.CondominioResponseTO;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +16,6 @@ public class AvisoResponseTO implements Serializable {
 
     private String descricaoAviso;
 
-    @JsonIgnoreProperties("avisos")
     private CondominioResponseTO condominioAvisos;
 
 }

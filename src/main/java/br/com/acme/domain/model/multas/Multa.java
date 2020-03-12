@@ -56,7 +56,7 @@ public class Multa implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_condominio")
-	private Condominio condominoMulta;
+	private Condominio condominioMulta;
 	
 	private BigDecimal valorMulta;
 }

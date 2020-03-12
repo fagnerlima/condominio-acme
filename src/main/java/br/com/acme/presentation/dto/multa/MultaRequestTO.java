@@ -13,15 +13,13 @@ public class MultaRequestTO implements Serializable {
 
     private static final long serialVersionUID = 9092186921347962543L;
 
-    private Long id;
-
     private String descricaoMulta;
 
     private LocalDate dataMulta;
 
     private Long unidadeMultaId;
 
-    private Long condominoMultaId;
+    private Long condominioMultaId;
 
     private BigDecimal valorMulta;
 

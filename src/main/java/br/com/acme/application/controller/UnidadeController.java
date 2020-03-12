@@ -68,8 +68,8 @@ public class UnidadeController {
     @PostMapping
     public ResponseEntity<ResponseTO<UnidadeResponseTO>> save(@RequestBody UnidadeRequestTO unidadeRequestTO) {
         Unidade unidade = modelMapperFacade.map(unidadeRequestTO, Unidade.class);
-        Unidade savedUnidade = unidadeService.save(unidade);
-        UnidadeResponseTO unidadeResponseTO = modelMapperFacade.map(savedUnidade, UnidadeResponseTO.class);
+        Unidade unidadeSaved = unidadeService.save(unidade);
+        UnidadeResponseTO unidadeResponseTO = modelMapperFacade.map(unidadeSaved, UnidadeResponseTO.class);
 
         return ResponseEntityFactory.created(unidadeResponseTO);
     }
@@ -77,8 +77,8 @@ public class UnidadeController {
     @PutMapping("/{id}")
     public ResponseEntity<ResponseTO<UnidadeResponseTO>> update(@PathVariable Long id, @RequestBody UnidadeRequestTO unidadeRequestTO) {
         Unidade unidade = modelMapperFacade.map(unidadeRequestTO, Unidade.class);
-        Unidade savedUnidade = unidadeService.update(id, unidade);
-        UnidadeResponseTO unidadeResponseTO = modelMapperFacade.map(savedUnidade, UnidadeResponseTO.class);
+        Unidade unidadeUpdated = unidadeService.update(id, unidade);
+        UnidadeResponseTO unidadeResponseTO = modelMapperFacade.map(unidadeUpdated, UnidadeResponseTO.class);
 
         return ResponseEntityFactory.ok(unidadeResponseTO);
     }

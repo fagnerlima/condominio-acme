@@ -2,13 +2,16 @@ package br.com.acme.application.controller;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.acme.application.factory.ResponseEntityFactory;
@@ -52,8 +55,8 @@ public class MultaController {
     @PostMapping
     public ResponseEntity<ResponseTO<MultaResponseTO>> save(@RequestBody MultaRequestTO multaRequestTO) {
         Multa multa = modelMapperFacade.map(multaRequestTO, Multa.class);
-        Multa savedMulta = multaService.save(multa);
-        MultaResponseTO multaResponseTO = modelMapperFacade.map(savedMulta, MultaResponseTO.class);
+        Multa multaSaved = multaService.save(multa);
+        MultaResponseTO multaResponseTO = modelMapperFacade.map(multaSaved, MultaResponseTO.class);
 
         return ResponseEntityFactory.created(multaResponseTO);
     }
@@ -61,10 +64,16 @@ public class MultaController {
     @PutMapping("/{id}")
     public ResponseEntity<ResponseTO<MultaResponseTO>> update(@PathVariable Long id, @RequestBody MultaRequestTO multaRequestTO) {
         Multa multa = modelMapperFacade.map(multaRequestTO, Multa.class);
-        Multa updatedMulta = multaService.update(id, multa);
-        MultaResponseTO multaResponseTO = modelMapperFacade.map(updatedMulta, MultaResponseTO.class);
+        Multa multaUpdated = multaService.update(id, multa);
+        MultaResponseTO multaResponseTO = modelMapperFacade.map(multaUpdated, MultaResponseTO.class);
 
         return ResponseEntityFactory.ok(multaResponseTO);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        multaService.delete(id);
     }
 
 }

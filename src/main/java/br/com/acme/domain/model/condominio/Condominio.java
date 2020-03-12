@@ -48,7 +48,7 @@ public class Condominio implements Serializable {
 	
 	private String telefone;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "condominoMulta")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "condominioMulta")
 	private Set<Multa> multasAplicadas;
 	
 	@OneToMany

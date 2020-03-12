@@ -44,5 +44,5 @@ public class Aviso implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_condominio")
-	private Condominio condominoAvisos;
+	private Condominio condominioAvisos;
 }
