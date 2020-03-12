@@ -39,7 +39,8 @@ public class CondominioController {
     @GetMapping
     public ResponseEntity<ResponseTO<Page<CondominioReducedResponseTO>>> findAll(Pageable pageable) {
         Page<Condominio> condominiosPage = condominioService.findAll(pageable);
-        Page<CondominioReducedResponseTO> condominiosPageResponseTO = modelMapperFacade.map(condominiosPage, CondominioReducedResponseTO.class);
+        Page<CondominioReducedResponseTO> condominiosPageResponseTO = modelMapperFacade.map(condominiosPage,
+                CondominioReducedResponseTO.class);
 
         return ResponseEntityFactory.ok(condominiosPageResponseTO);
     }

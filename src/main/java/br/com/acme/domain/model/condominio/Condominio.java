@@ -4,7 +4,7 @@
 package br.com.acme.domain.model.condominio;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -49,9 +49,9 @@ public class Condominio implements Serializable {
 	private String telefone;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "condominioMulta")
-	private Set<Multa> multasAplicadas;
+	private List<Multa> multasAplicadas;
 	
-	@OneToMany
-	private Set<Aviso> avisos;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "condominioAvisos")
+	private List<Aviso> avisos;
 	
 }

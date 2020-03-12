@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import br.com.acme.presentation.dto.aviso.AvisoResponseTO;
-import br.com.acme.presentation.dto.multa.MultaResponseTO;
+import br.com.acme.presentation.dto.aviso.AvisoReducedResponseTO;
+import br.com.acme.presentation.dto.multa.MultaReducedResponseTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,10 +24,10 @@ public class CondominioReducedResponseTO implements Serializable {
 
     private String telefone;
 
-    @JsonIgnoreProperties("condominioMulta")
-    private List<MultaResponseTO> multasAplicadas;
+    @JsonIgnoreProperties("condominioMultaNome")
+    private List<MultaReducedResponseTO> multasAplicadas;
 
-    @JsonIgnoreProperties("condominioAvisos")
-    private List<AvisoResponseTO> avisosDescricaoAviso;
+    @JsonIgnoreProperties("condominioAvisosNome")
+    private List<AvisoReducedResponseTO> avisos;
 
 }
