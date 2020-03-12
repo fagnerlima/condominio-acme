@@ -39,9 +39,8 @@ public class UnidadeController {
     @GetMapping
     public ResponseEntity<ResponseTO<Page<UnidadeReducedResponseTO>>> findAll(Pageable pageable) {
         Page<Unidade> unidadesPage = unidadeService.findAll(pageable);
-        Page<UnidadeReducedResponseTO> unidadesPageResponseTO = modelMapperFacade.map(unidadesPage, UnidadeReducedResponseTO.class);
 
-        return ResponseEntityFactory.ok(unidadesPageResponseTO);
+        return mapPageResponse(unidadesPage);
     }
 
     @GetMapping("/{id}")
@@ -50,6 +49,20 @@ public class UnidadeController {
         UnidadeResponseTO unidadeResponseTO = modelMapperFacade.map(unidade, UnidadeResponseTO.class);
 
         return ResponseEntityFactory.ok(unidadeResponseTO);
+    }
+
+    @GetMapping("/com-multas")
+    public ResponseEntity<ResponseTO<Page<UnidadeReducedResponseTO>>> findAllComMultas(Pageable pageable) {
+        Page<Unidade> unidadesPage = unidadeService.findAllComMultas(pageable);
+
+        return mapPageResponse(unidadesPage);
+    }
+
+    @GetMapping("/sem-multas")
+    public ResponseEntity<ResponseTO<Page<UnidadeReducedResponseTO>>> findAllSemMultas(Pageable pageable) {
+        Page<Unidade> unidadesPage = unidadeService.findAllSemMultas(pageable);
+
+        return mapPageResponse(unidadesPage);
     }
 
     @PostMapping
@@ -74,6 +87,12 @@ public class UnidadeController {
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         unidadeService.delete(id);
+    }
+
+    private ResponseEntity<ResponseTO<Page<UnidadeReducedResponseTO>>> mapPageResponse(Page<Unidade> unidadesPage) {
+        Page<UnidadeReducedResponseTO> unidadesPageResponseTO = modelMapperFacade.map(unidadesPage, UnidadeReducedResponseTO.class);
+
+        return ResponseEntityFactory.ok(unidadesPageResponseTO);
     }
 
 }
