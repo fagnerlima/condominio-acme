@@ -15,10 +15,9 @@ public class AvisoReducedResponseTO implements Serializable {
 
     private Long id;
 
-    @JsonProperty("descricao")
     private String descricaoAviso;
 
-    @JsonProperty("condominio")
-    private String condominioNome;
+    @JsonProperty("condominioAvisos")
+    private String condominioAvisosNome;
 
 }

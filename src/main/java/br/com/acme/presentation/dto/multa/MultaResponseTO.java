@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.acme.presentation.dto.condominio.CondominioResponseTO;
 import br.com.acme.presentation.dto.unidade.UnidadeResponseTO;
@@ -20,21 +19,16 @@ public class MultaResponseTO implements Serializable {
 
     private Long id;
 
-    @JsonProperty("descricao")
     private String descricaoMulta;
 
-    @JsonProperty("data")
     private LocalDate dataMulta;
 
-    @JsonIgnoreProperties("multas")
-    @JsonProperty("condominio")
+    @JsonIgnoreProperties("multasAplicadas")
     private CondominioResponseTO condominoMulta;
 
-    @JsonIgnoreProperties("multas")
-    @JsonProperty("unidade")
+    @JsonIgnoreProperties("multasUnidade")
     private UnidadeResponseTO unidadeMulta;
 
-    @JsonProperty("valor")
     private BigDecimal valorMulta;
 
 }

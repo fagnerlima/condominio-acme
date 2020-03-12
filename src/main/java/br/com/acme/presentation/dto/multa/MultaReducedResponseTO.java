@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.acme.presentation.dto.unidade.UnidadeReducedResponseTO;
 import lombok.Getter;
@@ -19,20 +18,15 @@ public class MultaReducedResponseTO implements Serializable {
 
     private Long id;
 
-    @JsonProperty("descricao")
     private String descricaoMulta;
 
-    @JsonProperty("data")
     private LocalDate dataMulta;
 
-    @JsonProperty("condominio")
     private String condominoMultaNome;
 
-    @JsonIgnoreProperties("multas")
-    @JsonProperty("unidade")
+    @JsonIgnoreProperties("multasUnidade")
     private UnidadeReducedResponseTO unidadeMulta;
 
-    @JsonProperty("valor")
     private BigDecimal valorMulta;
 
 }

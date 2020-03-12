@@ -16,6 +16,7 @@ import br.com.acme.domain.service.UnidadeService;
 import br.com.acme.infrastructure.facade.ModelMapperFacade;
 import br.com.acme.presentation.dto.shared.ResponseTO;
 import br.com.acme.presentation.dto.unidade.UnidadeReducedResponseTO;
+import br.com.acme.presentation.dto.unidade.UnidadeRequestTO;
 import br.com.acme.presentation.dto.unidade.UnidadeResponseTO;
 
 @RestController
@@ -48,7 +49,8 @@ public class UnidadeController {
     }
 
     @PostMapping
-    public ResponseEntity<ResponseTO<UnidadeResponseTO>> save(@RequestBody Unidade unidade) {
+    public ResponseEntity<ResponseTO<UnidadeResponseTO>> save(@RequestBody UnidadeRequestTO unidadeRequestTO) {
+        Unidade unidade = modelMapperFacade.map(unidadeRequestTO, Unidade.class);
         Unidade unidadeSaved = unidadeService.save(unidade);
         UnidadeResponseTO unidadeResponseTO = modelMapperFacade.map(unidadeSaved, UnidadeResponseTO.class);
 

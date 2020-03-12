@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import br.com.acme.presentation.dto.multa.MultaResponseTO;
 import lombok.Getter;
@@ -18,14 +17,11 @@ public class UnidadeResponseTO implements Serializable {
 
     private Long id;
 
-    @JsonProperty("numero")
     private String numeroUnidade;
 
-    @JsonProperty("bloco")
     private String blocoUnidade;
 
-    @JsonIgnoreProperties("unidade")
-    @JsonProperty("multas")
+    @JsonIgnoreProperties("unidadeMulta")
     private List<MultaResponseTO> multasUnidade;
 
 }
