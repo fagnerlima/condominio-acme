@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 
 import br.com.acme.presentation.dto.shared.ResponseTO;
 
-public class ResponseFactory {
+public class ResponseEntityFactory {
 
     public static <T> ResponseEntity<ResponseTO<T>> created(T data) {
         return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseTO<T>(data));

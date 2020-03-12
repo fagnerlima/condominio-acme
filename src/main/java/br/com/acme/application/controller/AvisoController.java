@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.acme.application.factory.ResponseFactory;
+import br.com.acme.application.factory.ResponseEntityFactory;
 import br.com.acme.domain.model.aviso.Aviso;
 import br.com.acme.domain.service.AvisoService;
 import br.com.acme.infrastructure.facade.ModelMapperFacade;
@@ -36,7 +36,7 @@ public class AvisoController {
         Page<Aviso> avisosPage = avisoService.findAll(pageable);
         Page<AvisoReducedResponseTO> avisosPageResponseTO = modelMapperFacade.map(avisosPage, AvisoReducedResponseTO.class);
 
-        return ResponseFactory.ok(avisosPageResponseTO);
+        return ResponseEntityFactory.ok(avisosPageResponseTO);
     }
 
     @GetMapping("/{id}")
@@ -44,7 +44,7 @@ public class AvisoController {
         Aviso aviso = avisoService.findById(id);
         AvisoResponseTO avisoResponseTO = modelMapperFacade.map(aviso, AvisoResponseTO.class);
 
-        return ResponseFactory.ok(avisoResponseTO);
+        return ResponseEntityFactory.ok(avisoResponseTO);
     }
 
     @PostMapping
@@ -52,7 +52,7 @@ public class AvisoController {
         Aviso avisoSaved = avisoService.save(aviso);
         AvisoResponseTO avisoResponseTO = modelMapperFacade.map(avisoSaved, AvisoResponseTO.class);
 
-        return ResponseFactory.created(avisoResponseTO);
+        return ResponseEntityFactory.created(avisoResponseTO);
     }
 
 }

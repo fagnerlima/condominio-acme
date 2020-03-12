@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.acme.application.factory.ResponseFactory;
+import br.com.acme.application.factory.ResponseEntityFactory;
 import br.com.acme.domain.model.multas.Multa;
 import br.com.acme.domain.service.MultaService;
 import br.com.acme.infrastructure.facade.ModelMapperFacade;
@@ -36,7 +36,7 @@ public class MultaController {
         Page<Multa> multasPage = multaService.findAll(pageable);
         Page<MultaReducedResponseTO> multasPageResponseTO = modelMapperFacade.map(multasPage, MultaReducedResponseTO.class);
 
-        return ResponseFactory.ok(multasPageResponseTO);
+        return ResponseEntityFactory.ok(multasPageResponseTO);
     }
 
     @GetMapping("/{id}")
@@ -44,7 +44,7 @@ public class MultaController {
         Multa multa = multaService.findById(id);
         MultaResponseTO multaResponseTO = modelMapperFacade.map(multa, MultaResponseTO.class);
 
-        return ResponseFactory.ok(multaResponseTO);
+        return ResponseEntityFactory.ok(multaResponseTO);
     }
 
     @PostMapping
@@ -52,7 +52,7 @@ public class MultaController {
         Multa multaSaved = multaService.save(multa);
         MultaResponseTO multaResponseTO = modelMapperFacade.map(multaSaved, MultaResponseTO.class);
 
-        return ResponseFactory.created(multaResponseTO);
+        return ResponseEntityFactory.created(multaResponseTO);
     }
 
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.acme.application.factory.ResponseFactory;
+import br.com.acme.application.factory.ResponseEntityFactory;
 import br.com.acme.domain.model.unidade.Unidade;
 import br.com.acme.domain.service.UnidadeService;
 import br.com.acme.infrastructure.facade.ModelMapperFacade;
@@ -36,7 +36,7 @@ public class UnidadeController {
         Page<Unidade> unidadesPage = unidadeService.findAll(pageable);
         Page<UnidadeReducedResponseTO> unidadesPageResponseTO = modelMapperFacade.map(unidadesPage, UnidadeReducedResponseTO.class);
 
-        return ResponseFactory.ok(unidadesPageResponseTO);
+        return ResponseEntityFactory.ok(unidadesPageResponseTO);
     }
 
     @GetMapping("/{id}")
@@ -44,7 +44,7 @@ public class UnidadeController {
         Unidade unidade = unidadeService.findById(id);
         UnidadeResponseTO unidadeResponseTO = modelMapperFacade.map(unidade, UnidadeResponseTO.class);
 
-        return ResponseFactory.ok(unidadeResponseTO);
+        return ResponseEntityFactory.ok(unidadeResponseTO);
     }
 
     @PostMapping
@@ -52,7 +52,7 @@ public class UnidadeController {
         Unidade unidadeSaved = unidadeService.save(unidade);
         UnidadeResponseTO unidadeResponseTO = modelMapperFacade.map(unidadeSaved, UnidadeResponseTO.class);
 
-        return ResponseFactory.created(unidadeResponseTO);
+        return ResponseEntityFactory.created(unidadeResponseTO);
     }
 
 }

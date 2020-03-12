@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.acme.application.factory.ResponseFactory;
+import br.com.acme.application.factory.ResponseEntityFactory;
 import br.com.acme.domain.model.condominio.Condominio;
 import br.com.acme.domain.service.CondominioService;
 import br.com.acme.infrastructure.facade.ModelMapperFacade;
@@ -36,7 +36,7 @@ public class CondominioController {
         Page<Condominio> condominiosPage = condominioService.findAll(pageable);
         Page<CondominioReducedResponseTO> condominiosPageResponseTO = modelMapperFacade.map(condominiosPage, CondominioReducedResponseTO.class);
 
-        return ResponseFactory.ok(condominiosPageResponseTO);
+        return ResponseEntityFactory.ok(condominiosPageResponseTO);
     }
 
     @GetMapping("/{id}")
@@ -44,7 +44,7 @@ public class CondominioController {
         Condominio condominio = condominioService.findById(id);
         CondominioResponseTO condominioResponseTO = modelMapperFacade.map(condominio, CondominioResponseTO.class);
 
-        return ResponseFactory.ok(condominioResponseTO);
+        return ResponseEntityFactory.ok(condominioResponseTO);
     }
 
     @PostMapping
@@ -52,7 +52,7 @@ public class CondominioController {
         Condominio condominioSaved = condominioService.save(condominio);
         CondominioResponseTO condominioResponseTO = modelMapperFacade.map(condominioSaved, CondominioResponseTO.class);
 
-        return ResponseFactory.created(condominioResponseTO);
+        return ResponseEntityFactory.created(condominioResponseTO);
     }
 
 }
