@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ import br.com.acme.domain.model.multas.Multa;
 import br.com.acme.domain.service.MultaService;
 import br.com.acme.infrastructure.facade.ModelMapperFacade;
 import br.com.acme.presentation.dto.multa.MultaReducedResponseTO;
+import br.com.acme.presentation.dto.multa.MultaRequestTO;
 import br.com.acme.presentation.dto.multa.MultaResponseTO;
 import br.com.acme.presentation.dto.shared.ResponseTO;
 
@@ -48,11 +50,21 @@ public class MultaController {
     }
 
     @PostMapping
-    public ResponseEntity<ResponseTO<MultaResponseTO>> save(@RequestBody Multa multa) {
-        Multa multaSaved = multaService.save(multa);
-        MultaResponseTO multaResponseTO = modelMapperFacade.map(multaSaved, MultaResponseTO.class);
+    public ResponseEntity<ResponseTO<MultaResponseTO>> save(@RequestBody MultaRequestTO multaRequestTO) {
+        Multa multa = modelMapperFacade.map(multaRequestTO, Multa.class);
+        Multa savedMulta = multaService.save(multa);
+        MultaResponseTO multaResponseTO = modelMapperFacade.map(savedMulta, MultaResponseTO.class);
 
         return ResponseEntityFactory.created(multaResponseTO);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ResponseTO<MultaResponseTO>> update(@PathVariable Long id, @RequestBody MultaRequestTO multaRequestTO) {
+        Multa multa = modelMapperFacade.map(multaRequestTO, Multa.class);
+        Multa updatedMulta = multaService.update(id, multa);
+        MultaResponseTO multaResponseTO = modelMapperFacade.map(updatedMulta, MultaResponseTO.class);
+
+        return ResponseEntityFactory.ok(multaResponseTO);
     }
 
 }

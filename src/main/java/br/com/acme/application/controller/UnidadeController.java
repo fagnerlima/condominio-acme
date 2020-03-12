@@ -2,12 +2,16 @@ package br.com.acme.application.controller;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.acme.application.factory.ResponseEntityFactory;
@@ -51,10 +55,25 @@ public class UnidadeController {
     @PostMapping
     public ResponseEntity<ResponseTO<UnidadeResponseTO>> save(@RequestBody UnidadeRequestTO unidadeRequestTO) {
         Unidade unidade = modelMapperFacade.map(unidadeRequestTO, Unidade.class);
-        Unidade unidadeSaved = unidadeService.save(unidade);
-        UnidadeResponseTO unidadeResponseTO = modelMapperFacade.map(unidadeSaved, UnidadeResponseTO.class);
+        Unidade savedUnidade = unidadeService.save(unidade);
+        UnidadeResponseTO unidadeResponseTO = modelMapperFacade.map(savedUnidade, UnidadeResponseTO.class);
 
         return ResponseEntityFactory.created(unidadeResponseTO);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ResponseTO<UnidadeResponseTO>> update(@PathVariable Long id, @RequestBody UnidadeRequestTO unidadeRequestTO) {
+        Unidade unidade = modelMapperFacade.map(unidadeRequestTO, Unidade.class);
+        Unidade savedUnidade = unidadeService.update(id, unidade);
+        UnidadeResponseTO unidadeResponseTO = modelMapperFacade.map(savedUnidade, UnidadeResponseTO.class);
+
+        return ResponseEntityFactory.ok(unidadeResponseTO);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        unidadeService.delete(id);
     }
 
 }
