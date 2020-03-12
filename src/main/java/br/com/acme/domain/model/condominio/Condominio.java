@@ -16,9 +16,11 @@ import javax.persistence.Table;
 
 import br.com.acme.domain.model.aviso.Aviso;
 import br.com.acme.domain.model.multas.Multa;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -26,6 +28,8 @@ import lombok.Setter;
  *
  */
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Builder

@@ -14,9 +14,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import br.com.acme.domain.model.condominio.Condominio;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -24,6 +26,8 @@ import lombok.Setter;
  *
  */
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Builder
