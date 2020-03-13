@@ -16,7 +16,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import br.com.acme.application.service.exception.BusinessException;
 import br.com.acme.application.service.exception.InformationNotFoundException;
 import br.com.acme.infrastructure.service.MessageService;
-import br.com.acme.presentation.dto.shared.ResponseTO;
 
 @ControllerAdvice
 public class ApplicationResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
@@ -47,7 +46,7 @@ public class ApplicationResponseEntityExceptionHandler extends ResponseEntityExc
     }
 
     protected ResponseEntity<Object> handleException(Exception exception, HttpStatus status, WebRequest request, String key) {
-        ResponseTO<List<String>> response = new ResponseTO<>(Arrays.asList((messageService.getMessage(key))));
+        List<String> response = Arrays.asList((messageService.getMessage(key)));
 
         return handleExceptionInternal(exception, response, new HttpHeaders(), status, request);
     }
