@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.com.acme.presentation.dto.unidade.UnidadeReducedResponseTO;
@@ -12,7 +14,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class MultaReducedResponseTO implements Serializable {
+public class MultaReducedResponseTO extends RepresentationModel<MultaReducedResponseTO> implements Serializable {
 
     private static final long serialVersionUID = 9092186921347962543L;
 
