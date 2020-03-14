@@ -1,0 +1,416 @@
+{
+	"info": {
+		"_postman_id": "d8a2043d-ff06-4033-864a-0b226477f8b2",
+		"name": "condominio-acme",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "unidades",
+			"item": [
+				{
+					"name": "/unidades",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/unidades?sort=id,asc",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"unidades"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "id,asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/unidades/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/unidades/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"unidades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/unidades/com-multas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/unidades/com-multas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"unidades",
+								"com-multas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/unidades/sem-multas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/unidades/sem-multas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"unidades",
+								"sem-multas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/unidades",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"numeroUnidade\": \"1\",\n\t\"blocoUnidade\": \"C\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/unidades",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"unidades"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/unidades/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"numeroUnidade\": \"1\",\n\t\"blocoUnidade\": \"A\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/unidades/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"unidades",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "multas",
+			"item": [
+				{
+					"name": "/multas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/multas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"multas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/multas/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/multas/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"multas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/multas",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricaoMulta\": \"Multa 2\",\n\t\"dataMulta\": \"2020-03-12\",\n\t\"unidadeMultaId\": 1,\n\t\"condominioMulta\": null,\n\t\"valorMulta\": 249.99\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/multas",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"multas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/multas/{id}",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricaoMulta\": \"Multa 2\",\n\t\"dataMulta\": \"10-03-2020\",\n\t\"unidadeMulta\": {\n\t\t\"id\": 3\n\t},\n\t\"condominioMulta\": null,\n\t\"valorMulta\": 249.99\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/multas/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"multas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "condominios",
+			"item": [
+				{
+					"name": "/condominios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/condominios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"condominios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/condominios/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/condominios/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"condominios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/condominios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Condomínio 1\",\n\t\"email\": \"cond1@email.com\",\n\t\"telefone\": \"(83) 99999-8888\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/condominios",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"condominios"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "avisos",
+			"item": [
+				{
+					"name": "/avisos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/avisos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"avisos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/avisos/{id}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/avisos/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"avisos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/avisos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"descricaoAviso\": \"Aviso 2\",\n\t\"unidadeAvisoId\": 1,\n\t\"condominioAvisosId\": null\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/avisos",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"avisos"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
