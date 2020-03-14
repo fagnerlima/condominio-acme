@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import br.com.acme.domain.model.condominio.Condominio;
+import br.com.acme.domain.model.unidade.Unidade;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -45,4 +46,8 @@ public class Aviso implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_condominio")
 	private Condominio condominioAvisos;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_unidade")
+	private Unidade unidadeAviso;
 }

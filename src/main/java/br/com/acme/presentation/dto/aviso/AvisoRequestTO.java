@@ -15,4 +15,6 @@ public class AvisoRequestTO implements Serializable {
 
     private Long condominioAvisosId;
 
+    private Long unidadeAvisoId;
+
 }

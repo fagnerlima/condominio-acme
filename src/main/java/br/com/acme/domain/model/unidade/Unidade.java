@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.com.acme.domain.model.aviso.Aviso;
 import br.com.acme.domain.model.multas.Multa;
 import br.com.acme.domain.model.responsavel.Responsavel;
 import lombok.AllArgsConstructor;
@@ -55,4 +56,6 @@ public class Unidade implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadeMulta")
 	private List<Multa> multasUnidade;
 	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "unidadeAviso")
+        private List<Aviso> avisosUnidade;
 }

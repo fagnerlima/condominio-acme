@@ -26,6 +26,7 @@ import br.com.acme.presentation.dto.aviso.AvisoReducedResponseTO;
 import br.com.acme.presentation.dto.aviso.AvisoRequestTO;
 import br.com.acme.presentation.dto.aviso.AvisoResponseTO;
 import br.com.acme.presentation.dto.condominio.CondominioResponseTO;
+import br.com.acme.presentation.dto.unidade.UnidadeResponseTO;
 
 @RestController
 @RequestMapping("/avisos")
@@ -44,9 +45,14 @@ public class AvisoController {
         aviso.add(createSelfLink(aviso.getId()));
 
         CondominioResponseTO condominio = aviso.getCondominioAvisos();
+        UnidadeResponseTO unidade = aviso.getUnidadeAviso();
 
         if (condominio != null) {
             condominio.add(CondominioController.createSelfLink(condominio.getId()));
+        }
+
+        if (unidade != null) {
+            unidade.add(UnidadeController.createSelfLink(unidade.getId()));
         }
     }
 

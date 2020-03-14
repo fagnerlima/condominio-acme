@@ -7,6 +7,7 @@ import org.springframework.hateoas.RepresentationModel;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import br.com.acme.presentation.dto.aviso.AvisoReducedResponseTO;
 import br.com.acme.presentation.dto.multa.MultaReducedResponseTO;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,5 +26,8 @@ public class UnidadeReducedResponseTO extends RepresentationModel<UnidadeReduced
 
     @JsonIgnoreProperties("unidadeMulta")
     private List<MultaReducedResponseTO> multasUnidade;
+
+    @JsonIgnoreProperties({ "unidadeNumero", "unidadeBloco" })
+    private List<AvisoReducedResponseTO> avisosUnidade;
 
 }

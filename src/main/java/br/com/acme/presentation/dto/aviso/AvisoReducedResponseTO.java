@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import org.springframework.hateoas.RepresentationModel;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +19,13 @@ public class AvisoReducedResponseTO extends RepresentationModel<AvisoReducedResp
 
     private String descricaoAviso;
 
+    @JsonProperty("condominioNome")
     private String condominioAvisosNome;
+
+    @JsonProperty("unidadeNumero")
+    private String unidadeNumeroUnidade;
+
+    @JsonProperty("unidadeBloco")
+    private String unidadeBlocoUnidade;
 
 }

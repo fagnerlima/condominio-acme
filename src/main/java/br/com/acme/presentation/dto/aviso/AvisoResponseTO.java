@@ -7,6 +7,7 @@ import org.springframework.hateoas.RepresentationModel;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.com.acme.presentation.dto.condominio.CondominioResponseTO;
+import br.com.acme.presentation.dto.unidade.UnidadeResponseTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,5 +23,8 @@ public class AvisoResponseTO extends RepresentationModel<AvisoResponseTO> implem
 
     @JsonIgnoreProperties("avisos")
     private CondominioResponseTO condominioAvisos;
+
+    @JsonIgnoreProperties("avisosUnidade")
+    private UnidadeResponseTO unidadeAviso;
 
 }

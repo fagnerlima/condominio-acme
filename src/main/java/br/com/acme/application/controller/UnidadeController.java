@@ -24,6 +24,8 @@ import br.com.acme.application.facade.ResponseEntityFacade;
 import br.com.acme.domain.model.unidade.Unidade;
 import br.com.acme.domain.service.UnidadeService;
 import br.com.acme.infrastructure.facade.ModelMapperFacade;
+import br.com.acme.presentation.dto.aviso.AvisoReducedResponseTO;
+import br.com.acme.presentation.dto.aviso.AvisoResponseTO;
 import br.com.acme.presentation.dto.multa.MultaReducedResponseTO;
 import br.com.acme.presentation.dto.multa.MultaResponseTO;
 import br.com.acme.presentation.dto.unidade.UnidadeReducedResponseTO;
@@ -47,9 +49,14 @@ public class UnidadeController {
         unidade.add(createSelfLink(unidade.getId()));
 
         List<MultaResponseTO> multas = unidade.getMultasUnidade();
+        List<AvisoResponseTO> avisos = unidade.getAvisosUnidade();
 
         if (multas != null && !multas.isEmpty()) {
-            multas.stream().forEach(multaUnidade -> multaUnidade.add(MultaController.createSelfLink(multaUnidade.getId())));
+            multas.stream().forEach(multa -> multa.add(MultaController.createSelfLink(multa.getId())));
+        }
+
+        if (avisos != null && !avisos.isEmpty()) {
+            avisos.stream().forEach(aviso -> aviso.add(AvisoController.createSelfLink(aviso.getId())));
         }
     }
 
@@ -57,9 +64,14 @@ public class UnidadeController {
         unidade.add(createSelfLink(unidade.getId()));
 
         List<MultaReducedResponseTO> multas = unidade.getMultasUnidade();
+        List<AvisoReducedResponseTO> avisos = unidade.getAvisosUnidade();
 
         if (multas != null && !multas.isEmpty()) {
-            multas.stream().forEach(multaUnidade -> multaUnidade.add(MultaController.createSelfLink(multaUnidade.getId())));
+            multas.stream().forEach(multa -> multa.add(MultaController.createSelfLink(multa.getId())));
+        }
+
+        if (avisos != null && !avisos.isEmpty()) {
+            avisos.stream().forEach(aviso -> aviso.add(AvisoController.createSelfLink(aviso.getId())));
         }
     }
 
